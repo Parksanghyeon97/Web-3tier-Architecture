@@ -19,3 +19,7 @@ MySQL [myDB]> insert into users (id, name, passwd) values (33, 'park', '010-3333
 
 
 그렇지 않을 경우 ALB DNS 주소를 입력했을때 화면에 출력되는 내용이 없어 오류를 발생합니다.
+
+DB 구성이 완료되고 나서 ALB DNS 주소를 입력하면 users 테이블의 select * from users 결과가 출력됩니다.
+
+![image](https://github.com/Parksanghyeon97/Web-3tier-Architecture/assets/102512718/ec1efaba-0d27-4689-9012-0060f436deba)
