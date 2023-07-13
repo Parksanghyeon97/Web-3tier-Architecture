@@ -58,17 +58,6 @@ resource "aws_subnet" "Web-1" {
     }
 }
 
-# Create [ Was-1 ] (ap-northeast-2a)
-resource "aws_subnet" "Was-1" {
-    vpc_id = aws_vpc.project-VPC.id
-    cidr_block = "10.0.2.0/24"
-    availability_zone = "ap-northeast-2a"
-
-    tags = {
-      Name = "Was-1"
-    }
-}
-
 # Create [ DB-1 ] (ap-northeast-2a)
 resource "aws_subnet" "DB-1" {
     vpc_id = aws_vpc.project-VPC.id
@@ -99,17 +88,6 @@ resource "aws_subnet" "Web-2" {
 
     tags = {
       Name = "Web-2"
-    }
-}
-
-# Create [ Was-2 ] (ap-northeast-2c)
-resource "aws_subnet" "Was-2" {
-    vpc_id = aws_vpc.project-VPC.id
-    cidr_block = "10.0.12.0/24"
-    availability_zone = "ap-northeast-2c"
-
-    tags = {
-      Name = "Was-2"
     }
 }
 
@@ -174,18 +152,6 @@ resource "aws_route_table_association" "My_Pri_RT_association-Web1" {
 # 명시적 서브넷 연결 [ Web-2 <==> Private-route ]
 resource "aws_route_table_association" "My_Pri_RT_association-Web2" {
     subnet_id = aws_subnet.Web-2.id
-    route_table_id = aws_route_table.Private-route.id
-}
-
-# 명시적 서브넷 연결 [ Was-1 <==> Private-route ]
-resource "aws_route_table_association" "My_Pri_RT_association-Was1" {
-    subnet_id = aws_subnet.Was-1.id
-    route_table_id = aws_route_table.Private-route.id
-}
-
-# 명시적 서브넷 연결 [ Was-2 <==> Private-route ]
-resource "aws_route_table_association" "My_Pri_RT_association-Was2" {
-    subnet_id = aws_subnet.Was-2.id
     route_table_id = aws_route_table.Private-route.id
 }
 
